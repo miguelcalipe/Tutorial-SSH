@@ -1,0 +1,210 @@
+Cómo conectarte por SSH a tu Raspberry Pi 5 (Fácil y paso a paso)
+
+Para conectarte vía SSH a tu Raspberry Pi 5, primero debes habilitar el servidor SSH en la Pi y luego conectarte desde otro dispositivo usando el comando:
+
+ssh [usuario]@[IP_o_hostname]
+
+También necesitas conocer la dirección IP de tu Raspberry Pi, que puedes ver usando:
+
+hostname -I
+
+1. Habilitar SSH en tu Raspberry Pi
+Opción A: Desde el escritorio
+
+Abre el menú (arriba a la izquierda).
+
+Ve a Preferences > Raspberry Pi Configuration.
+
+En la pestaña Interfaces, activa SSH.
+
+Haz clic en OK.
+
+Opción B: Desde la terminal
+
+Abre una terminal.
+
+Ejecuta:
+
+sudo raspi-config
+
+
+Entra a Interface Options / Interfacing Options.
+
+Selecciona SSH > Yes.
+
+Sal con Finish.
+
+
+2. Conectarte desde otro dispositivo
+Averigua la IP de tu Raspberry Pi
+
+Puedes hacerlo de varias formas:
+
+Pasando el mouse sobre el icono de Wi-Fi.
+
+Ejecutando:
+
+hostname -I
+
+
+o:
+
+ifconfig
+
+Usa SSH desde tu PC, laptop o móvil
+
+En una terminal, PowerShell o aplicación SSH, escribe:
+
+ssh [usuario]@[IP]
+
+
+Ejemplo:
+
+ssh pi@192.168.1.100
+
+Consideraciones importantes
+Usuario y contraseña predeterminados
+
+Usuario: pi
+
+Contraseña: raspberry
+Te recomiendo cambiarla en cuanto entres por primera vez.
+
+Conectarte usando el nombre del host
+
+También puedes intentar:
+
+ssh pi@raspberrypi.local
+
+
+Funciona en la mayoría de redes domésticas, pero puede fallar si la resolución de nombres no está bien configurada.
+
+Acceso desde fuera de tu red (Internet)
+
+Para conectarte desde otra ciudad o país, debes abrir puertos en tu router.
+Este proceso depende del modelo y la marca, así que revisa la guía del fabricante.
+
+
+Cómo saber cuál es tu usuario y tu hostname en Raspberry Pi
+✅ 1. Para saber tu usuario actual
+
+En la terminal escribe:
+
+whoami
+
+
+Eso te devuelve el nombre del usuario con el que estás logueado en ese momento.
+
+Ejemplo:
+
+pi
+
+✅ 2. Para saber el hostname (el nombre de tu Raspberry Pi)
+
+En la terminal escribe:
+
+hostname
+
+
+Ejemplo:
+
+raspberrypi
+
+
+Ese es el nombre que podrás usar en la red, por ejemplo:
+
+ssh pi@raspberrypi.local
+
+✅ 3. Si quieres ver todo junto (usuario + hostname)
+
+También puedes usar:
+
+whoami && hostname
+
+
+o:
+
+echo $USER@$HOSTNAME
+
+
+Esto te mostrará algo así como:
+
+pi@raspberrypi
+
+💡 ¿Cómo saber si ese hostname funciona en tu red?
+
+Prueba a hacer ping desde otra máquina:
+
+ping raspberrypi.local
+
+
+Si responde, puedes usarlo para entrar por SSH sin saber la IP.
+
+🏠 ¿Qué es el hostname?
+
+El hostname es el nombre de la máquina, es decir, cómo la Raspberry Pi se identifica en la red.
+
+Es como ponerle nombre a tu vaca, mi Maestro Miguel:
+—Una cosa eres tú (el usuario).
+—Otra cosa es cómo se llama la vaca (la computadora).
+
+Ejemplos típicos de hostname:
+
+raspberrypi
+
+raspberrypi5
+
+mipi-casa
+
+servidor-miguel
+
+👉 Cómo ver el hostname
+hostname
+
+🟦 Diferencias claras entre usuario y hostname
+
+Aquí te lo dejo masticadito para tu tutorial:
+
+Concepto	Usuario	Hostname
+¿Qué es?	Una cuenta dentro del sistema	El nombre de la máquina
+¿A quién identifica?	A la persona o proceso que usa el sistema	A la Raspberry Pi en la red
+¿Para qué sirve?	Acceder, ejecutar comandos, tener permisos	Localizar la máquina en la red
+Ejemplo típico	pi, miguel	raspberrypi
+¿Cambia entre dispositivos?	Sí, cada usuario es distinto	No, es único por cada Pi
+¿Con qué comando lo veo?	whoami	hostname
+¿Se usa en SSH?	Sí	Sí
+¿Cómo se usan juntos?	usuario@hostname	Identifica persona + equipo
+
+Es decir:
+
+👉 El usuario eres tú.
+👉 El hostname es tu Raspberry Pi.
+
+🟩 ¿Por qué es importante saber esto cuando usas SSH?
+
+Cuando tú te conectas por SSH, escribes:
+
+ssh usuario@hostname
+
+
+Ejemplos reales:
+
+ssh pi@raspberrypi.local
+
+
+o (si cambiaste usuario y nombre del equipo):
+
+ssh miguel@mipi5.local
+
+
+En SSH siempre vas a necesitar:
+
+El usuario (quién eres tú)
+
+El hostname o la IP (a qué máquina te conectas)
+
+
+
+
+
+
