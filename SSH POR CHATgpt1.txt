@@ -1,7 +1,5 @@
 Cómo conectarte por SSH a tu Raspberry Pi 5 (Fácil y paso a paso)
-
 Para conectarte vía SSH a tu Raspberry Pi 5, primero debes habilitar el servidor SSH en la Pi y luego conectarte desde otro dispositivo usando el comando:
-
 ssh [usuario]@[IP_o_hostname]
 
 También necesitas conocer la dirección IP de tu Raspberry Pi, que puedes ver usando:
@@ -10,81 +8,51 @@ hostname -I
 
 1. Habilitar SSH en tu Raspberry Pi
 Opción A: Desde el escritorio
-
 Abre el menú (arriba a la izquierda).
-
 Ve a Preferences > Raspberry Pi Configuration.
-
 En la pestaña Interfaces, activa SSH.
-
 Haz clic en OK.
 
 Opción B: Desde la terminal
-
 Abre una terminal.
-
 Ejecuta:
-
 sudo raspi-config
-
-
 Entra a Interface Options / Interfacing Options.
-
 Selecciona SSH > Yes.
-
 Sal con Finish.
 
 
 2. Conectarte desde otro dispositivo
 Averigua la IP de tu Raspberry Pi
-
 Puedes hacerlo de varias formas:
-
 Pasando el mouse sobre el icono de Wi-Fi.
-
 Ejecutando:
-
 hostname -I
-
-
 o:
-
 ifconfig
 
 Usa SSH desde tu PC, laptop o móvil
-
 En una terminal, PowerShell o aplicación SSH, escribe:
 
 ssh [usuario]@[IP]
 
-
 Ejemplo:
-
 ssh pi@192.168.1.100
 
 Consideraciones importantes
 Usuario y contraseña predeterminados
-
 Usuario: pi
 
 Contraseña: raspberry
 Te recomiendo cambiarla en cuanto entres por primera vez.
 
 Conectarte usando el nombre del host
-
 También puedes intentar:
-
 ssh pi@raspberrypi.local
-
-
 Funciona en la mayoría de redes domésticas, pero puede fallar si la resolución de nombres no está bien configurada.
-
 Acceso desde fuera de tu red (Internet)
-
 Para conectarte desde otra ciudad o país, debes abrir puertos en tu router.
 Este proceso depende del modelo y la marca, así que revisa la guía del fabricante.
-
-
 Cómo saber cuál es tu usuario y tu hostname en Raspberry Pi
 ✅ 1. Para saber tu usuario actual
 
